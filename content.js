@@ -23,7 +23,8 @@ window.SHOW = {
     { type: "video", src: "media/dance2.mp4", poster: "media/dance2.jpg", caption: "Thirteen seconds of pure attitude" },
     { type: "photo", src: "media/photo7.jpg", caption: "Dressed and ready before the music even started" },
     { type: "note",  says: "“I'm not the emotional type.”", does: "Sure. I've seen what you do for people when you think nobody's counting." },
-    { type: "photo", src: "media/photo5.jpg", caption: "The calls that were supposed to be five minutes" }
+    { type: "photo", src: "media/photo5.jpg", caption: "The calls that were supposed to be five minutes" },
+    { type: "video", src: "media/dance3.mp4", poster: "media/dance3.jpg", caption: "Blue lights, bare feet, zero doubt" }
   ],
 
   // The player card (the "card" track). value is 0-100, show is what's printed.
