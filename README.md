@@ -1,12 +1,13 @@
-# One Night Only
+# Paridhi
 
-A birthday site built like a show: count-in, curtain, four acts and a finale.
+A birthday page that only comes alive when she moves.
 
-## Make it hers
-1. Open `content.js` and change the name, the lines in Act III, the captions and the letter.
-2. Put her videos and photos in `media/` using the file names listed in `content.js`
-   (`dance1.mp4`, `photo1.jpg`, ...), or change the names there to match your files.
-3. Optional: add a song to `media/` and set `song: "media/song.mp3"`.
+She taps 5-6-7-8, a quiet heartbeat starts, and nothing else happens until she dances with the
+phone in her hand (or taps / spins the record). Her movement builds the beat, floods the page
+with colour and draws a circle. Each stretch of the circle unlocks a track: a photo, a dance
+video, a note. When the circle closes, the record opens the letter.
 
-## Publish
-Repo Settings -> Pages -> Deploy from branch -> `main` / root.
+- Edit all words, tracks and the letter in `content.js`.
+- Photos and videos live in `media/`.
+- Publish: Settings -> Pages -> Deploy from branch -> `main` / root. Motion sensing needs https, which Pages gives you.
+- Progress is remembered on her phone. To replay from zero, clear site data or open in a private tab.

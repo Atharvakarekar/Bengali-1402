@@ -2,95 +2,63 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="robots" content="noindex">
-<title>One Night Only</title>
+<meta name="theme-color" content="#120a14">
+<title>Paridhi</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=DM+Sans:wght@400;500;700&family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,900;1,9..144,500;1,9..144,900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
-<body class="locked">
-<div class="spot" aria-hidden="true"></div>
-<canvas id="confetti" aria-hidden="true"></canvas>
+<body>
+<canvas id="fx" aria-hidden="true"></canvas>
 
-<!-- THE COUNT-IN -->
-<div id="gate">
-  <div class="curtain left" aria-hidden="true"></div>
-  <div class="curtain right" aria-hidden="true"></div>
-  <div class="gate-inner">
-    <p class="eyebrow">One night only · <span data-fill="date"></span></p>
-    <h1>Places,<br><em>everyone.</em></h1>
-    <p class="gate-sub">You know how every show starts.<br>Count us in.</p>
-    <div class="counts" aria-hidden="true"><span>5</span><span>6</span><span>7</span><span>8</span></div>
-    <button id="countBtn" type="button">Tap</button>
-  </div>
-</div>
+<!-- START -->
+<section id="start">
+  <p class="eyebrow">for one person only · <span data-fill="date"></span></p>
+  <h1 data-fill="name"></h1>
+  <p class="start-sub">This page doesn't run on wifi.<br><em>It runs on you.</em></p>
+  <p class="start-how">Sound on. Phone in your hand.<br>When the beat starts, don't stand still.</p>
+  <button id="go" type="button">5 · 6 · 7 · 8</button>
+</section>
 
-<main>
-  <header class="hero">
-    <p class="eyebrow">Tonight, on the main stage</p>
-    <h1 class="marquee" data-fill="name"></h1>
-    <p class="hero-sub">turning one year more <em>herself</em></p>
-    <p class="scroll-hint">scroll, the show's begun ↓</p>
-  </header>
-
-  <section class="act" id="act1">
-    <div class="stub reveal"><span>Act I</span></div>
-    <h2 class="reveal">Oxygen</h2>
-    <p class="lede reveal">Regular air is 21% oxygen. Then there's whatever happens to you when the music starts. Press play and watch the gauge.</p>
-    <div class="gauge reveal" role="img" aria-label="Oxygen gauge">
-      <div class="gauge-bar"><i id="o2fill"></i></div>
-      <div class="gauge-read"><b id="o2num">21%</b><span id="o2msg">just regular air</span></div>
+<!-- THE FLOOR -->
+<main id="floor" hidden>
+  <p class="status" id="status" aria-live="polite"></p>
+  <div class="stage" id="stage">
+    <svg class="arc" viewBox="0 0 100 100" aria-hidden="true">
+      <circle class="arc-bg" cx="50" cy="50" r="46"/>
+      <circle class="arc-fg" id="arc" cx="50" cy="50" r="46"/>
+    </svg>
+    <div class="record" id="record" role="button" tabindex="0" aria-label="Tap or spin the record">
+      <div class="label"><span class="l-name" data-fill="name"></span><span class="l-side" id="lside">side A · tap me</span></div>
     </div>
-    <div class="reels" id="reels"></div>
-  </section>
-
-  <section class="act" id="act2">
-    <div class="stub reveal"><span>Act II</span></div>
-    <h2 class="reveal">The Scouting Report</h2>
-    <p class="lede reveal">Every great athlete gets a card. Tap yours to turn it over.</p>
-    <button class="card reveal" id="card" type="button" aria-label="Player card, tap to flip">
-      <div class="card-face front">
-        <div class="card-top"><span class="jersey" data-fill="jersey"></span><span class="pos">Centre stage<br><small>plays for: everyone she loves</small></span></div>
-        <div class="card-name" data-fill="name"></div>
-        <ul class="stats" id="stats"></ul>
-      </div>
-      <div class="card-face back">
-        <p class="eyebrow">Scout's notes</p>
-        <p class="scout" data-fill="scouting"></p>
-        <p class="stamp">Not for trade</p>
-      </div>
-    </button>
-  </section>
-
-  <section class="act" id="act3">
-    <div class="stub reveal"><span>Act III</span></div>
-    <h2 class="reveal">Off the Record</h2>
-    <p class="lede reveal">You're very good at pretending you don't care. I'm better at noticing. Tap each one.</p>
-    <div class="quiet" id="quiet"></div>
-  </section>
-
-  <section class="act" id="act4">
-    <div class="stub reveal"><span>Act IV</span></div>
-    <h2 class="reveal">Backstage</h2>
-    <p class="lede reveal">The parts nobody else got tickets to.</p>
-    <div class="wall" id="wall"></div>
-  </section>
-
-  <section class="act finale" id="finale">
-    <div class="stub reveal"><span>Finale</span></div>
-    <h2 class="reveal">For <span data-fill="name"></span></h2>
-    <div class="letter" id="letter"></div>
-    <p class="sign reveal">— <span data-fill="from"></span></p>
-    <button id="bow" class="bow reveal" type="button">Take your bow</button>
-    <p class="hb" id="hb" hidden>Happy birthday, <span data-fill="name"></span>.</p>
-  </section>
+    <div id="ring"></div>
+  </div>
+  <div class="meter"><i id="o2"></i></div>
+  <p class="hint" id="hint">dance with your phone · tap the record · or spin it</p>
 </main>
 
-<button id="music" type="button" hidden aria-label="Toggle music">♪</button>
-<dialog id="lightbox"><img alt=""><p></p></dialog>
+<!-- A TRACK -->
+<div id="sheet" hidden>
+  <button class="x" id="close" type="button" aria-label="Close">×</button>
+  <div id="sheetBody"></div>
+</div>
 
+<!-- THE CIRCLE CLOSES -->
+<section id="finale" hidden>
+  <button class="x" id="closeFinale" type="button" aria-label="Close">×</button>
+  <div class="fin-inner">
+    <p class="eyebrow">the circle is closed</p>
+    <p class="meaning" data-fill="meaning"></p>
+    <div class="letter" id="letter"></div>
+    <p class="sign">— <span data-fill="from"></span></p>
+    <button id="bow" type="button">Take your bow</button>
+  </div>
+</section>
+
+<div id="toast" aria-live="polite"></div>
 <script src="content.js"></script>
 <script src="app.js"></script>
 </body>
