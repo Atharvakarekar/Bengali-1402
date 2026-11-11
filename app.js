@@ -63,6 +63,7 @@
     const frame = el("div", "frame");
     const video = el("video");
     Object.assign(video, { src: v.src, controls: true, playsInline: true, preload: "metadata", loop: true });
+    if (v.poster) video.poster = v.poster;
     video.addEventListener("error", () => { frame.innerHTML = placeholder(v.src); });
     video.addEventListener("play", () => {
       vids.forEach(o => o !== video && o.pause());

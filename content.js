@@ -15,9 +15,8 @@ window.SHOW = {
 
   // ACT I — her dance videos (portrait reels look best). Keep each under ~25 MB.
   videos: [
-    { src: "media/dance1.mp4", title: "The one where she forgot anyone was watching" },
-    { src: "media/dance2.mp4", title: "Rehearsal? Performance? Same face." },
-    { src: "media/dance3.mp4", title: "Proof that gravity is optional" }
+    { src: "media/dance1.mp4", poster: "media/dance1.jpg", title: "The whole studio is yours and you know it" },
+    { src: "media/dance2.mp4", poster: "media/dance2.jpg", title: "Thirteen seconds of pure attitude" }
   ],
 
   // ACT II — player card. value is 0-100, show is what's printed.
