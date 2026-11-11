@@ -201,7 +201,27 @@
   S.letter.forEach((t, i) => { const p = el("p", "", esc(t)); p.style.animationDelay = 0.5 + i * 0.9 + "s"; letter.append(p); });
   function openFinale() { paused = true; fin.hidden = false; fin.scrollTop = 0; e = 1; }
   $("#closeFinale").addEventListener("click", () => { fin.hidden = true; paused = false; });
-  $("#bow").addEventListener("click", ev => { ev.currentTarget.textContent = "Encore"; burst(240); blip(1320, 0.4); buzz([80, 50, 80, 50, 200]); });
+  let bowed = false;
+  $("#bow").addEventListener("click", ev => { if (bowed) return openEncore(); bowed = true; ev.currentTarget.textContent = "Encore"; burst(240); blip(1320, 0.4); buzz([80, 50, 80, 50, 200]); });
+
+  /* ---------- encore: his voice, then the keepsake ---------- */
+  const enc = $("#encore"), keep = $("#keep"), encVoice = $("#encVoice"), keepRing = $("#keepRing");
+  let voice = null;
+  const faces = T.filter(t => t.type === "photo" || t.poster).map(t => (t.type === "photo" ? t.src : t.poster));
+  faces.forEach((src, i) => { const a = (-90 + i * 360 / faces.length) * Math.PI / 180, d = el("i"); d.style.left = 50 + 50 * Math.cos(a) + "%"; d.style.top = 50 + 50 * Math.sin(a) + "%"; d.style.backgroundImage = `url("${src}")`; keepRing.append(d); });
+  if (S.whatsapp) $("#turn").href = `https://wa.me/${S.whatsapp}?text=${encodeURIComponent(S.whatsappText || "")}`; else $("#turn").hidden = true;
+  if (!S.voice) $("#again").hidden = true;
+  function showKeep() { vidPlaying = false; encVoice.hidden = true; keep.hidden = false; burst(120); }
+  function playVoice() {
+    if (!S.voice) return showKeep();
+    keep.hidden = true; encVoice.hidden = false;
+    if (!voice) { voice = new Audio(S.voice); voice.addEventListener("ended", showKeep); voice.addEventListener("error", () => { S.voice = ""; $("#again").hidden = true; showKeep(); }); }
+    try { voice.currentTime = 0; } catch (_) {}
+    vidPlaying = true; voice.play().catch(() => {});
+  }
+  function openEncore() { paused = true; enc.hidden = false; playVoice(); }
+  $("#again").addEventListener("click", playVoice);
+  $("#closeEncore").addEventListener("click", () => { if (voice) voice.pause(); vidPlaying = false; enc.hidden = true; });
 
   let toastT; function toast(msg) { const t = $("#toast"); t.textContent = msg; t.classList.add("show"); clearTimeout(toastT); toastT = setTimeout(() => t.classList.remove("show"), 2600); }
 })();

@@ -58,6 +58,22 @@
   </div>
 </section>
 
+<!-- ENCORE: hidden track + keepsake -->
+<section id="encore" hidden>
+  <button class="x" id="closeEncore" type="button" aria-label="Close">×</button>
+  <div class="enc-voice" id="encVoice">
+    <p class="eyebrow">hidden track · 16</p>
+    <div class="bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    <p class="enc-line">One more thing.<br>Volume up.</p>
+  </div>
+  <div class="keep" id="keep" hidden>
+    <div class="keep-ring" id="keepRing"><div class="keep-mid"><span class="k-name" data-fill="name"></span><span class="k-date" data-fill="fullDate"></span><span class="k-sub">the circle you drew</span></div></div>
+    <p class="keep-hint">screenshot this. it's yours.</p>
+    <a id="turn" class="turn" target="_blank" rel="noopener">Your turn 🎤</a>
+    <button id="again" class="again" type="button">hear it again</button>
+  </div>
+</section>
+
 <div id="toast" aria-live="polite"></div>
 <script src="content.js"></script>
 <script src="app.js"></script>

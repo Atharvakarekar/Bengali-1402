@@ -5,6 +5,14 @@ window.SHOW = {
   name: "Paridhi",
   from: "Atharva",
   date: "16.11",
+  fullDate: "16.11.2026",
+
+  // ENCORE — your voice note (plays when she taps Encore). Leave "" to skip it.
+  voice: "media/voice.mp3",
+  // "Your turn" button: opens your WhatsApp chat so she can record one back.
+  // Country code + number, digits only. Leave "" to hide the button.
+  whatsapp: "918879896069",
+  whatsappText: "Okay, my turn 🎤",
 
   // The ring. Each track unlocks, in this order, as she keeps moving.
   // type: "photo" | "video" | "note" | "card"
